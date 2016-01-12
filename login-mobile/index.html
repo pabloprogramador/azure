@@ -12,7 +12,8 @@
 
         function initiate() {
             if ("WebSocket" in window) {
-                var ws = new WebSocket("ws://nodejs-whatsappauth.rhcloud.com:8000/gencode");
+                //var ws = new WebSocket("ws://nodejs-whatsappauth.rhcloud.com:8000/gencode");
+                var ws = new WebSocket("ws://nodejs-pabloprogramador.rhcloud.com:8000/gencode");
                 ws.onopen = function() {
                     var hello = {
                         op: 'hello'
@@ -21,8 +22,8 @@
 
                 };
                 ws.onmessage = function(evt) {
-					$("#qrcode").html("");                
-					
+                    $("#qrcode").html("");                
+                    
                     var obj = JSON.parse(evt.data);
                     console.log("Receivied:" + JSON.stringify(obj));
 
@@ -59,7 +60,7 @@
             }
         }
 
-	
+    
         function getProfileData(token) {
             var url = "https://graph.facebook.com/me?access_token=" + token;
             $.get(url, function(obj) {
